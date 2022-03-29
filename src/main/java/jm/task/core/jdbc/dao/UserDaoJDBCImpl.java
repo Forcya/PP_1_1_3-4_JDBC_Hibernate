@@ -12,17 +12,15 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
     public UserDaoJDBCImpl() {
-
     }
 
-    Util util = new Util();
-    User user = new User();
     private static String DELETE = "delete from Users where id = ?";
     private static String CREATE = "CREATE TABLE IF NOT EXISTS Users(id INT primary key AUTO_INCREMENT, name VARCHAR(15), lastName VARCHAR(20), age INT);";
     private static String INSERT = "insert into Users (name, lastName, age) values(?, ?, ?)";
     private static String CLEANE = "TRUNCATE TABLE Users";
     private static String DELETE_TABLE = "DROP TABLE IF EXISTS Users;";
     private static String SELECT_ALL = "select * from Users;";
+    Util util = new Util();
 
     Statement statement;
     PreparedStatement preparedStatement;
