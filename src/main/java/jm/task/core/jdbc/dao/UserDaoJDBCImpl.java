@@ -63,7 +63,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         try {
             preparedStatement = util.getConnection().prepareStatement(DELETE);
-            preparedStatement.setInt((int) id, 1);
+            preparedStatement.setInt(1, (int) id); //1 - столбик id, 2 - строчка (пользователь)
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
