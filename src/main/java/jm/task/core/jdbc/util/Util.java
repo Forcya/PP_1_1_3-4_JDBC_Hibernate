@@ -10,22 +10,26 @@ public class Util {
     private static final String dbUserName = "root";
     private static final String dbPassword = "4561756Api17";
 
-    private static Connection connection;
-
 
     public static Connection getConnection() {
-        return connection;
-    }
-
-    public Util() {
-
         try {
-            connection = DriverManager.getConnection(dbURL,dbUserName, dbPassword);
+            Connection connection = DriverManager.getConnection(dbURL,dbUserName, dbPassword);
             if (!connection.isClosed()) {
                 System.out.println("Соединение с БД установленно");
             }
+            return connection;
         } catch (SQLException e) {
             System.out.println("Проблемы с подключением");
+            return null;
         }
     }
+
+    public static void isClosed () {
+        try {
+            getConnection().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
